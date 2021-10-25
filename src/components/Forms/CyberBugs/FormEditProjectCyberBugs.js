@@ -2,12 +2,13 @@ import React, { useRef, useEffect } from 'react'
 import { Editor } from '@tinymce/tinymce-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
-import { getProjectCategoryApiActions, setSubmitDrawerEditProjectActions, updateProjectApiActions } from '../../../redux/actions/CyberBugs/CyberBugsActions';
+import { getProjectCategoryApiActions, updateProjectApiActions } from '../../../redux/actions/CyberBugs/ProjectActions';
 import * as Yup from 'yup'
+import { setSubmitDrawerActions } from '../../../redux/actions/CyberBugs/DrawerActions';
 
 export default function FormEditProjectCyberBugs() {
     const { arrProjectCategory } = useSelector(state => state.GetDataProjectCategoryReducers)
-    const { id, projectName, description, categoryId } = useSelector(state => state.ProjectCyberBugsReducers.projectEdit)
+    const { id, projectName, description, categoryId } = useSelector(state => state.DrawerReducers.projectEdit)
     const editorRef = useRef(null);
     const dispatch = useDispatch()
 
@@ -28,7 +29,7 @@ export default function FormEditProjectCyberBugs() {
     });
 
     useEffect(() => {
-        dispatch(setSubmitDrawerEditProjectActions(formik.handleSubmit))
+        dispatch(setSubmitDrawerActions(formik.handleSubmit))
         dispatch(getProjectCategoryApiActions())
     }, [])
 

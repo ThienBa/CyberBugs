@@ -7,8 +7,8 @@ import {
     PlusCircleOutlined
 } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { openDrawerAddTaskActions } from '../../../redux/actions/CyberBugs/CyberBugsActions';
 import FormAddTaskCyberBugs from '../../Forms/CyberBugs/FormAddTaskCyberBugs';
+import { openDrawerActions } from '../../../redux/actions/CyberBugs/DrawerActions';
 
 export default function SideBarCyberBugs() {
     const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export default function SideBarCyberBugs() {
                 style={{ height: "109vh" }}
             >
                 <Menu.Item key="1" icon={<PlusCircleOutlined />} onClick={() => {
-                    dispatch(openDrawerAddTaskActions(<FormAddTaskCyberBugs />, 'Add task'))
+                    dispatch(openDrawerActions(<FormAddTaskCyberBugs />, 'Add task'))
                 }}>
                     Create task
                 </Menu.Item>

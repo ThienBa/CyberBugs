@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { Editor } from '@tinymce/tinymce-react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { createProjectApiActions, getProjectCategoryApiActions } from '../../../redux/actions/CyberBugs/CyberBugsActions';
+import { createProjectApiActions, getProjectCategoryApiActions } from '../../../redux/actions/CyberBugs/ProjectActions';
 
 export default function CreateProjectCyberBugs() {
     const dispatch = useDispatch();

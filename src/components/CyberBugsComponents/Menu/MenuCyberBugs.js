@@ -24,6 +24,9 @@ export default function MenuCyberBugs() {
                 <div>
                     <NavLink to="/createprojectcyberbugs" style={{ color: "black" }} activeClassName="font-weight-bold text-info"><i className="fa fa-cog" />Create Project</NavLink>
                 </div>
+                <div>
+                    <NavLink to="/usermanagementcyberbugs" style={{ color: "black" }} activeClassName="font-weight-bold text-info"><i className="fa fa-users" />User Management</NavLink>
+                </div>
             </div>
             <div className="feature">
                 <div>

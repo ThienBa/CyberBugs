@@ -5,7 +5,9 @@ import { STATUS_CODE, TOKEN, USER_LOGIN } from '../../../utils/constants/setting
 import { DISPLAY_LOADING, HIDE_LOADING } from '../../constants/LoadingConstants';
 import { history } from '../../../utils/history'
 import { openNotificationWithIcon } from '../../../utils/Notifications';
-import { GET_USER_BY_PROJECT_ID, GET_USER_BY_PROJECT_ID_API_SAGA } from '../../constants/CyberBugs/UserConstants';
+import { DELETE_USER_API_SAGA, EDIT_USER_API_SAGA, GET_USERS_API_SAGA, GET_USERS_REDUCERS, GET_USER_BY_PROJECT_ID, GET_USER_BY_PROJECT_ID_API_SAGA, USER_SIGNUP_API_SAGA } from '../../constants/CyberBugs/UserConstants';
+import Swal from 'sweetalert2';
+import { CLOSE_DRAWER } from '../../constants/CyberBugs/DrawerConstants';
 
 function* loginUserApi(action) {
     yield put({
@@ -141,4 +143,122 @@ function* getUserByProjectIdApiSaga(action) {
 
 export function* followGetUserByProjectIdApiSaga() {
     yield takeLatest(GET_USER_BY_PROJECT_ID_API_SAGA, getUserByProjectIdApiSaga)
+}
+
+
+/**
+ * Nghiệp vụ user signup
+ * 24/10/2021 - Huỳnh Thiên Bá
+ */
+//================================================Register================================================
+function* userSigUpApiSaga(action) {
+    try {
+        const { status } = yield call(() => userCyberBugsServices.userSignUpApi(action.newUser))
+        if (status === STATUS_CODE.SUCCESS) {
+            history.push('/login')
+            Swal.fire({
+                title: 'Success!',
+                text: 'Account registration successful please login!',
+                icon: 'success',
+                confirmButtonText: 'Continue'
+            })
+        }
+    } catch (err) {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Account registration failed!',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        })
+    }
+}
+
+export function* followUserSigUpApiSaga() {
+    yield takeLatest(USER_SIGNUP_API_SAGA, userSigUpApiSaga)
+}
+
+/**
+ * Nghiệp vụ get users
+ * 24/10/2021 - Huỳnh Thiên Bá
+ */
+function* getUsersApiSaga(action) {
+    yield put({
+        type: DISPLAY_LOADING
+    })
+
+    yield delay(500)
+
+    try {
+        const { data, status } = yield call(() => userCyberBugsServices.getUsersApi(action.keyword))
+        if (status === STATUS_CODE.SUCCESS) {
+            yield put({
+                type: GET_USERS_REDUCERS,
+                arrListUser: data.content
+            })
+            if (action.keyword && data.content.length !== 0) {
+                openNotificationWithIcon('success', `Found ${data.content.length} results for search "${action.keyword}"`)
+            }
+        }
+    } catch (err) {
+        console.log(err)
+    }
+
+    yield put({
+        type: HIDE_LOADING
+    })
+}
+
+export function* followGetUsersApiSaga() {
+    yield takeLatest(GET_USERS_API_SAGA, getUsersApiSaga)
+}
+
+/**
+ * Nghiệp vụ delete user
+ * 25/10/2021 - Huỳnh Thiên Bá
+ */
+function* deleteUserApiSaga(action) {
+    try {
+        const { status } = yield call(() => userCyberBugsServices.deleteUserApi(action.userId))
+        if (status === STATUS_CODE.SUCCESS) {
+            yield put({
+                type: GET_USERS_API_SAGA,
+                keyword: ''
+            })
+            openNotificationWithIcon('success', 'Delete user successfully!')
+        }
+    } catch (err) {
+        openNotificationWithIcon('error', 'Delete user failed!')
+    }
+}
+
+export function* followDeleteUserApiSaga() {
+    yield takeLatest(DELETE_USER_API_SAGA, deleteUserApiSaga)
+}
+
+/**
+ * Nghiệp vụ delete user
+ * 25/10/2021 - Huỳnh Thiên Bá
+ */
+function* editUserApiSaga(action) {
+    console.log(action);
+    try {
+        const { status } = yield call(() => userCyberBugsServices.editUserApi(action.userEdit))
+        if (status === STATUS_CODE.SUCCESS) {
+            yield put({
+                type: GET_USERS_API_SAGA,
+                keyword: ''
+            })
+            yield put({
+                type: CLOSE_DRAWER
+            })
+            openNotificationWithIcon('success', 'Edit user successfully!')
+        }
+    } catch (err) {
+        console.log(err.response.data)
+        openNotificationWithIcon('error', 'Edit user failed!')
+    }
+}
+
+export function* followEditUserApiSaga() {
+    yield takeLatest(EDIT_USER_API_SAGA, editUserApiSaga)
 }

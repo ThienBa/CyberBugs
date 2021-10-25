@@ -17,6 +17,12 @@ export function* rootSagas() {
         UserCyberBugsSaga.followAssignUserProjectApi(),
         UserCyberBugsSaga.followRemoveUserFromProjectApi(),
         UserCyberBugsSaga.followGetUserByProjectIdApiSaga(),
+        //=============================================USERS=============================================
+        UserCyberBugsSaga.followUserSigUpApiSaga(),
+        UserCyberBugsSaga.followGetUsersApiSaga(),
+        UserCyberBugsSaga.followDeleteUserApiSaga(),
+        UserCyberBugsSaga.followEditUserApiSaga(),
+
         ProjectCyberBugsSaga.followcreateProjectApi(),
         ProjectCyberBugsSaga.followGetListProjectApi(),
         ProjectCyberBugsSaga.followUpdateProjectApi(),
@@ -28,15 +34,15 @@ export function* rootSagas() {
         TaskCyberBugsSaga.followUpdateStatusTaskApiSaga(),
         TaskCyberBugsSaga.followUpdateChangTaskApiSaga(),
 
-        TaskTypeCyberBugsSaga.followGetAllTaskTypeApiSaga(),
-        StatusCyberBugsSaga.followGetAllStatusApiSaga(),
-        PriorityCyberBugsSaga.followGetAllPriorityApiSaga(),
-        GetDataCategoryCyberBugsSaga.followGetDataProjectCategoryApi(),
-
         //=============================================COMMENTS=============================================
         CommentCyberBugsSaga.followGetAllCommentApiSaga(),
         CommentCyberBugsSaga.followAddCommentApiSaga(),
         CommentCyberBugsSaga.followDeleteCommentApiSaga(),
         CommentCyberBugsSaga.followEditCommentApiSaga(),
+
+        TaskTypeCyberBugsSaga.followGetAllTaskTypeApiSaga(),
+        StatusCyberBugsSaga.followGetAllStatusApiSaga(),
+        PriorityCyberBugsSaga.followGetAllPriorityApiSaga(),
+        GetDataCategoryCyberBugsSaga.followGetDataProjectCategoryApi(),
     ])
 }

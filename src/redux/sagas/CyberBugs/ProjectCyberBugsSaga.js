@@ -1,4 +1,4 @@
-import { CLOSE_DRAWER_EDIT_PROJECT, CREATE_PROJECT_API_SAGA, DELETE_PROJECT_API_SAGA, GET_LIST_PROJECT, GET_LIST_PROJECT_API_SAGA, GET_PROJECT_DETAIL, GET_PROJECT_DETAIL_API_SAGA, UPDATE_PROJECT_API_SAGA } from "../../constants/CyberBugs/CyberBugsConstants";
+import { CREATE_PROJECT_API_SAGA, DELETE_PROJECT_API_SAGA, GET_LIST_PROJECT, GET_LIST_PROJECT_API_SAGA, GET_PROJECT_DETAIL, GET_PROJECT_DETAIL_API_SAGA, UPDATE_PROJECT_API_SAGA } from "../../constants/CyberBugs/CyberBugsConstants";
 import { takeLatest, call, put, delay } from 'redux-saga/effects'
 import { ProjectCyberBugsServices } from "../../../services/ProjectCyberBugsServices";
 import { STATUS_CODE } from "../../../utils/constants/settingSystem";
@@ -6,6 +6,8 @@ import { DISPLAY_LOADING, HIDE_LOADING } from '../../constants/LoadingConstants'
 import { history } from "../../../utils/history";
 import { openNotificationWithIcon } from "../../../utils/Notifications";
 import { GET_USER_BY_PROJECT_ID_API_SAGA } from "../../constants/CyberBugs/UserConstants";
+import { CLOSE_DRAWER } from "../../constants/CyberBugs/DrawerConstants";
+import { USER_LOGIN } from "../../../utils/constants/settingSystem"
 
 /**
  * Nghiệp vụ tạo project
@@ -44,6 +46,17 @@ export function* followcreateProjectApi() {
  */
 
 function* getListProjectApi() {
+    if (!localStorage.getItem(USER_LOGIN)) {
+        history.push('/login');
+        openNotificationWithIcon('warning', 'Please login!')
+        return;
+    }
+
+    yield put({
+        type: DISPLAY_LOADING
+    })
+
+    yield delay(500)
     try {
         const { data, status } = yield call(() => ProjectCyberBugsServices.getListProjectApi())
         if (status === STATUS_CODE.SUCCESS) {
@@ -57,8 +70,11 @@ function* getListProjectApi() {
             })
         }
     } catch (err) {
-        console.log(err)
+        // console.log(err)
     }
+    yield put({
+        type: HIDE_LOADING
+    })
 }
 
 export function* followGetListProjectApi() {
@@ -90,7 +106,7 @@ function* updateProjectApi(action) {
         }
 
         yield put({
-            type: CLOSE_DRAWER_EDIT_PROJECT
+            type: CLOSE_DRAWER
         })
 
     } catch (err) {
@@ -152,12 +168,6 @@ export function* followDeleteProjectApi() {
 
 
 function* getProjectDetailApi(action) {
-    // yield put({
-    //     type: DISPLAY_LOADING
-    // })
-
-    // yield delay(500)
-
     try {
         const { data, status } = yield call(() => ProjectCyberBugsServices.getProjectDetailApi(action.projectId))
         if (status === STATUS_CODE.SUCCESS) {
@@ -165,18 +175,11 @@ function* getProjectDetailApi(action) {
                 type: GET_PROJECT_DETAIL,
                 projectDetail: data.content
             })
-        } else {
-            openNotificationWithIcon('error', 'Get project detail error!')
         }
-
     } catch (err) {
-        openNotificationWithIcon('error', 'Get project detail error!')
+        openNotificationWithIcon('warning', 'Please select a project!')
         history.push('/projectmanagementcyberbugs')
     }
-
-    // yield put({
-    //     type: HIDE_LOADING
-    // })
 }
 
 export function* followGetProjectDetailApi() {

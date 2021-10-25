@@ -1,15 +1,15 @@
 import React from 'react'
 import { Drawer, Button, Space } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeDrawerEditProjectActions } from '../../../redux/actions/CyberBugs/CyberBugsActions';
+import { closeDrawerActions } from '../../../redux/actions/CyberBugs/DrawerActions';
 
 
 export default function DrawerEditProject() {
-    const { visible, Component, handleSubmitEditForm, title } = useSelector(state => state.DrawerEditProjectReducers)
+    const { visible, Component, handleSubmitEditForm, title } = useSelector(state => state.DrawerReducers)
     const dispatch = useDispatch()
 
     const onClose = () => {
-        dispatch(closeDrawerEditProjectActions());
+        dispatch(closeDrawerActions());
     };
 
     return (

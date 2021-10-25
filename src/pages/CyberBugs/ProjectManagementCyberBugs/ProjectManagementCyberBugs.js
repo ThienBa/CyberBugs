@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Table, Tag, Popconfirm, Avatar, Popover, AutoComplete } from 'antd';
 import { EditOutlined, DeleteOutlined, } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { assignUserProjectActions, deleteProjectApiActions, getDataDrawerEditProjectActions, getListProjectApiActions, getUserSearchApiActions, openDrawerEditProjectActions, removeUserFromProjectActions } from '../../../redux/actions/CyberBugs/CyberBugsActions'
+import {deleteProjectApiActions, getListProjectApiActions } from '../../../redux/actions/CyberBugs/ProjectActions';
 import FormEditProjectCyberBugs from '../../../components/Forms/CyberBugs/FormEditProjectCyberBugs';
 import { NavLink } from 'react-router-dom';
+import { assignUserProjectActions, getUserSearchApiActions, removeUserFromProjectActions } from '../../../redux/actions/CyberBugs/UserActions';
+import { getDataDrawerEditProjectActions, openDrawerActions} from '../../../redux/actions/CyberBugs/DrawerActions';
 
 const textPopConfirm = () => {
     return "Are you sure you want to delete this project?"
@@ -154,7 +156,7 @@ export default function ProjectManagementCyberBugs() {
                 return (
                     <>
                         <button onClick={() => {
-                            dispatch(openDrawerEditProjectActions(<FormEditProjectCyberBugs />, 'Edit project'))
+                            dispatch(openDrawerActions(<FormEditProjectCyberBugs />, 'Edit project'))
                             dispatch(getDataDrawerEditProjectActions(record))
                         }} className="btn btn-info mr-2"><EditOutlined /></button>
                         <Popconfirm placement="topRight" title={textPopConfirm} onConfirm={() => { confirm(record.id) }} okText="Yes" cancelText="No">

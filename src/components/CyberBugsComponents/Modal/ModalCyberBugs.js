@@ -125,7 +125,6 @@ export default function ModalCyberBugs() {
         }
     }
 
-    // console.log(arrComment)
     const renderComments = () => {
         return arrComment?.filter(item => item.taskId === taskDetailModal?.taskId).reduceRight((listComment, item, index) => {
             listComment.push(<div className="comment-item" key={index}>

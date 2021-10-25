@@ -9,12 +9,13 @@ import { rootSagas } from "./sagas/rootSagas"
 import { UserLoginCyberBugsReducer } from "./reducers/CyberBugs/UserLoginCyberBugsReducer";
 import GetDataProjectCategoryReducers from "./reducers/CyberBugs/GetDataProjectCategoryReducers";
 import ProjectCyberBugsReducers from "./reducers/CyberBugs/ProjectCyberBugsReducers";
-import DrawerEditProjectReducers from "./reducers/CyberBugs/DrawerEditProjectReducers";
 import PriorityReducers from "./reducers/CyberBugs/PriorityReducers";
 import TaskTypeReducers from "./reducers/CyberBugs/TaskTypeReducers";
 import StatusReducers from "./reducers/CyberBugs/StatusReducers";
 import TaskReducers from "./reducers/CyberBugs/TaskReducers";
 import CommentReducers from "./reducers/CyberBugs/CommentReducers";
+import UserCyberBugsReducers from "./reducers/CyberBugs/UserCyberBugsReducers";
+import DrawerReducers from "./reducers/CyberBugs/DrawerReducers";
 const middlewareSaga = createMiddleWareSaga();
 
 const rootReducer = combineReducers({
@@ -23,12 +24,13 @@ const rootReducer = combineReducers({
     UserLoginCyberBugsReducer,
     GetDataProjectCategoryReducers,
     ProjectCyberBugsReducers,
-    DrawerEditProjectReducers,
+    DrawerReducers,
     PriorityReducers,
     TaskTypeReducers,
     StatusReducers,
     TaskReducers,
-    CommentReducers
+    CommentReducers,
+    UserCyberBugsReducers
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk, middlewareSaga));

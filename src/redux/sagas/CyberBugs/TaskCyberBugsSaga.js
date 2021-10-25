@@ -2,9 +2,9 @@ import { put, call, takeLatest, select } from 'redux-saga/effects'
 import { taskCyberBugsServices } from '../../../services/TaskCyberBugsServices';
 import { STATUS_CODE } from '../../../utils/constants/settingSystem';
 import { openNotificationWithIcon } from '../../../utils/Notifications';
-import { CLOSE_DRAWER_EDIT_PROJECT } from '../../constants/CyberBugs/CyberBugsConstants';
 import { CREATE_TASK_API_SAGA, GET_TASK_DETAIL, GET_TASK_DETAIL_API_SAGA, UPDATE_CHANGE_TASK_API_SAGA, UPDATE_STATUS_TASK_API_SAGA, HANDLE_CHANGE_SELECT_USER_ASSIGN, HANDLE_CHANGE_TASK, HANDLE_DELETE_USER_ASSIGN } from '../../constants/CyberBugs/TaskConstants';
 import { GET_PROJECT_DETAIL_API_SAGA } from '../../constants/CyberBugs/CyberBugsConstants'
+import { CLOSE_DRAWER } from '../../constants/CyberBugs/DrawerConstants';
 function* createTaskApiSagaTask(action) {
     try {
         const { data, status } = yield call(() => taskCyberBugsServices.createTaskApi(action.newTask));
@@ -16,7 +16,7 @@ function* createTaskApiSagaTask(action) {
             openNotificationWithIcon('success', 'Add task successfully!')
         }
         yield put({
-            type: CLOSE_DRAWER_EDIT_PROJECT
+            type: CLOSE_DRAWER
         })
 
     } catch (err) {
@@ -52,7 +52,7 @@ export function* followGetTaskDetailApiSaga() {
 
 function* updateStatusTaskApiSaga(action) {
     try {
-        const { data, status } = yield call(() => taskCyberBugsServices.updateStatusTaskApi(action.statusTaskUpdate))
+        const { status } = yield call(() => taskCyberBugsServices.updateStatusTaskApi(action.statusTaskUpdate))
 
         if (status === STATUS_CODE.SUCCESS) {
             yield put({

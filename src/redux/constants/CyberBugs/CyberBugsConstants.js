@@ -19,20 +19,11 @@ export const GET_LIST_PROJECT = "GET_LIST_PROJECT"
 
 export const GET_LIST_PROJECT_API_SAGA = "GET_LIST_PROJECT_API_SAGA"
 
-// ===========Drawer Edit project==========
-export const CLOSE_DRAWER_EDIT_PROJECT = "CLOSE_DRAWER_EDIT_PROJECT"
-export const OPEN_DRAWER_EDIT_PROJECT = "OPEN_DRAWER_EDIT_PROJECT"
-export const SET_SUBMIT_DRAWER_EDIT_PROJECT = "SET_SUBMIT_DRAWER_EDIT_PROJECT"
-export const GET_DATA_DRAWER_EDIT_PROJECT = "GET_DATA_DRAWER_EDIT_PROJECT"
-
-// ===========Drawer Update project==========
+// ===========Update project==========
 export const UPDATE_PROJECT_API_SAGA = "UPDATE_PROJECT_API_SAGA"
 
-// ===========Drawer Delete project==========
+// ===========Delete project==========
 export const DELETE_PROJECT_API_SAGA = "DELETE_PROJECT_API_SAGA"
-
-// ===========Drawer create task==========
-export const SET_SUBMIT_DRAWER_CREATE_TASK = "SET_SUBMIT_DRAWER_CREATE_TASK"
 
 // ===========Get member search==========
 export const GET_USER_SEARCH_API_SAGA = "GET_USER_SEARCH_API_SAGA"

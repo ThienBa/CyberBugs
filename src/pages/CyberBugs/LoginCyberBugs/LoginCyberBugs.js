@@ -5,6 +5,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { userLoginApiActions } from '../../../redux/actions/CyberBugs/UserActions';
+import { NavLink } from 'react-router-dom';
+
 
 export default function LoginCyberBugs(props) {
     const dispatch = useDispatch();
@@ -66,13 +68,16 @@ export default function LoginCyberBugs(props) {
                             Log in
                         </Button>
                     </div>
-                    <div className="form-group text-center">
+                    <div className="form-group text-center mb-0">
                         <Button className="mr-1" type="link" style={{ backgroundColor: "#1877F2", color: "#fff", width: 40, height: 40, borderRadius: "50%", border: "none" }}>
                             <i className="fab fa-facebook-f"></i>
                         </Button>
                         <Button type="link" style={{ backgroundColor: "#1DA1F2", color: "#fff", width: 40, height: 40, borderRadius: "50%", border: "none" }}>
                             <i className="fab fa-twitter"></i>
                         </Button>
+                    </div>
+                    <div className="form-group text-right">
+                        Or  <NavLink to="/register">register now!</NavLink>
                     </div>
                 </form>
             </div>

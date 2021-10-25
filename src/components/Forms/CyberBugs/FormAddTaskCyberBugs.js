@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Select, Slider } from 'antd';
 import { Editor } from '@tinymce/tinymce-react';
-import { getListProjectApiActions, getUserSearchApiActions, setSubmitDrawerCreateTaskActions } from '../../../redux/actions/CyberBugs/CyberBugsActions';
+import { getListProjectApiActions } from '../../../redux/actions/CyberBugs/ProjectActions';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getAllPriorityApiActions } from '../../../redux/actions/CyberBugs/PriorityActions';
@@ -10,7 +10,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { createTaskApiActions } from '../../../redux/actions/CyberBugs/TaskActions';
 import { getAllStatusApiActions } from '../../../redux/actions/CyberBugs/StatusActions';
-import { getUserByProjectIdApiActions } from '../../../redux/actions/CyberBugs/UserActions';
+import { getUserByProjectIdApiActions, getUserSearchApiActions } from '../../../redux/actions/CyberBugs/UserActions';
+import { setSubmitDrawerActions } from '../../../redux/actions/CyberBugs/DrawerActions';
 
 export default function FormAddTaskCyberBugs() {
     const { arrListProject } = useSelector(state => state.ProjectCyberBugsReducers)
@@ -56,7 +57,7 @@ export default function FormAddTaskCyberBugs() {
         dispatch(getAllPriorityApiActions())
         dispatch(getAllTaskTypeApiActions())
         dispatch(getAllStatusApiActions())
-        dispatch(setSubmitDrawerCreateTaskActions(formik.handleSubmit))
+        dispatch(setSubmitDrawerActions(formik.handleSubmit))
         dispatch(getUserSearchApiActions(""))
     }, [])
 

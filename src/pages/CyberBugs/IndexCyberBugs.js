@@ -11,6 +11,7 @@ export default function IndexCyberBugs(props) {
     useEffect(() => {
         dispatch(getProjectDetailApiActions(props.match.params.projectId))
     }, [])
+    
     return (
         <>
             <HeaderMainCyberBugs projectDetail={projectDetail} />

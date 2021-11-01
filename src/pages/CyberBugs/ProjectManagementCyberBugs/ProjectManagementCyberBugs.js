@@ -30,8 +30,8 @@ export default function ProjectManagementCyberBugs() {
     const columns = [
         {
             title: 'ID',
-            dataIndex: 'id', //Phân biệt header table
-            key: 'id', //Là thuộc tính
+            dataIndex: 'id', 
+            key: 'id',
             sorter: (item2, item1) => item2.id - item1.id,
             sortDirections: ['descend'],
         },
@@ -39,12 +39,11 @@ export default function ProjectManagementCyberBugs() {
             title: 'Project name',
             dataIndex: 'projectName',
             key: 'projectName',
-            // ...getColumnSearchProps('projectName'),
             render: (text, record, index) => {
                 return <NavLink to={`/projectdetail/${record.id}`}>{text}</NavLink>
             },
-            sorter: (item2, item1) => {
-                if (item2.projectName.trim().toLowerCase() < item1.projectName.trim().toLowerCase()) {
+            sorter: (projectNext, project) => {
+                if (projectNext.projectName.trim().toLowerCase() < project.projectName.trim().toLowerCase()) {
                     return -1;
                 }
                 return 1;
@@ -54,11 +53,8 @@ export default function ProjectManagementCyberBugs() {
             title: 'Category Name',
             dataIndex: 'categoryName',
             key: 'categoryName',
-            // ...getColumnSearchProps('categoryName'),
-            // sorter: (a, b) => a.categoryName.length - b.categoryName.length,
-            // sortDirections: ['descend', 'ascend'],
-            sorter: (item2, item1) => {
-                if (item2.categoryName.trim().toLowerCase() < item1.categoryName.trim().toLowerCase()) {
+            sorter: (categoryNext, category) => {
+                if (categoryNext.categoryName.trim().toLowerCase() < category.categoryName.trim().toLowerCase()) {
                     return -1;
                 }
                 return 1;
@@ -70,9 +66,8 @@ export default function ProjectManagementCyberBugs() {
             render: (text, record, index) => {
                 return <Tag color="magenta">{record.creator?.name}</Tag>
             },
-            // ...getColumnSearchProps('description'),
-            sorter: (item2, item1) => {
-                if (item2.creator.name.trim().toLowerCase() < item1.creator.name.trim().toLowerCase()) {
+            sorter: (createtorNext, createtor) => {
+                if (createtorNext.creator.name.trim().toLowerCase() < createtor.creator.name.trim().toLowerCase()) {
                     return -1;
                 }
                 return 1;
@@ -165,9 +160,6 @@ export default function ProjectManagementCyberBugs() {
                     </>
                 )
             },
-            // ...getColumnSearchProps('categoryName'),
-            // sorter: (a, b) => a.categoryName.length - b.categoryName.length,
-            // sortDirections: ['descend', 'ascend'],
         },
     ];
     return <div className="container mt-3">

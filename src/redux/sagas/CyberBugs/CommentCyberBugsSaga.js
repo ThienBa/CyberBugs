@@ -5,8 +5,8 @@ import { ADD_COMMENT_API_SAGA, DELETE_COMMENT_API_SAGA, EDIT_COMMENT_API_SAGA, G
 import Swal from 'sweetalert2';
 
 /**
- * Nghiệp vụ get all comment
- * 23/10/2021 - Huỳnh Thiên Bá
+ * Major get all comment
+ * 23/10/2021 - Huynh Thien Ba
  */
 function* getAllCommentApiSaga(action) {
     try {
@@ -18,7 +18,7 @@ function* getAllCommentApiSaga(action) {
             })
         }
     } catch (error) {
-        console.log(error)
+        alert(error.response.data)
     }
 }
 
@@ -27,8 +27,8 @@ export function* followGetAllCommentApiSaga() {
 }
 
 /**
- * Nghiệp vụ add comment
- * 24/10/2021 - Huỳnh Thiên Bá
+ * Major add comment
+ * 24/10/2021 - Huynh Thien Ba
  */
 function* addCommentApiSaga(action) {
     try {
@@ -60,8 +60,8 @@ export function* followAddCommentApiSaga() {
 }
 
 /**
- * Nghiệp vụ delete comment
- * 24/10/2021 - Huỳnh Thiên Bá
+ * Major delete comment
+ * 24/10/2021 - Huynh Thien Ba
  */
 function* deleteCommentApiSaga(action) {
     try {
@@ -93,8 +93,8 @@ export function* followDeleteCommentApiSaga() {
 }
 
 /**
- * Nghiệp vụ edit comment
- * 24/10/2021 - Huỳnh Thiên Bá
+ * Major edit comment
+ * 24/10/2021 - Huynh Thien Ba
  */
 function* editCommentApiSaga(action) {
     try {

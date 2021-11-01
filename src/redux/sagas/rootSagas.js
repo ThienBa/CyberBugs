@@ -11,7 +11,7 @@ import * as CommentCyberBugsSaga from "./CyberBugs/CommentCyberBugsSaga";
 
 export function* rootSagas() {
     yield all([
-        // Nghiệp vụ CyberBugs Saga
+        // Major CyberBugs Saga
         UserCyberBugsSaga.followLoginUserApi(),
         UserCyberBugsSaga.followGetUserSearchApi(),
         UserCyberBugsSaga.followAssignUserProjectApi(),

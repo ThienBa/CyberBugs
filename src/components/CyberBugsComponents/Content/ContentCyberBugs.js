@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { getAllCommentApiSagaActions } from '../../../redux/actions/CyberBugs/CommentActions';
 import { getTaskDetailApiActions, updateStatusTasApiActions } from '../../../redux/actions/CyberBugs/TaskActions';
 
-// JSON.stringify({ taskId: taskDetail.taskID, projectId: taskDetail.projectId })
 export default function ContentCyberBugs(props) {
     const { lstTask } = props.projectDetail;
     const dispatch = useDispatch()
@@ -87,35 +86,6 @@ export default function ContentCyberBugs(props) {
     return (
         <div className="content" style={{ display: 'flex' }}>
             {renderTaskProject()}
-            {/*                
-            <div className="card" style={{ width: '17rem', minHeight: '30rem' }}>
-                <div className="card-header">
-                    SELECTED FOR DEVELOPMENT 2
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Cras justo odio</li>
-                    <li className="list-group-item">Dapibus ac facilisis in</li>
-                </ul>
-            </div>
-            <div className="card" style={{ width: '17rem', minHeight: '30rem' }}>
-                <div className="card-header">
-                    IN PROGRESS 2
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Cras justo odio</li>
-                    <li className="list-group-item">Dapibus ac facilisis in</li>
-                </ul>
-            </div>
-            <div className="card" style={{ width: '17rem', minHeight: '30rem' }}>
-                <div className="card-header">
-                    DONE 3
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Cras justo odio</li>
-                    <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Vestibulum at eros</li>
-                </ul>
-            </div> */}
         </div>
 
     )

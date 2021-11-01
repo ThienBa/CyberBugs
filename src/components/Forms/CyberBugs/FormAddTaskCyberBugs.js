@@ -31,8 +31,8 @@ export default function FormAddTaskCyberBugs() {
     })
 
     const formik = useFormik({
-        enableReinitialize: true, //Load lại formil khi state hoặc props thay đổi
-        initialValues: { //Đưa dữ liệu từ reducer vào formik để có thể validation form
+        enableReinitialize: true, //Reload formik when state or props change
+        initialValues: { //Put data from reducer into formik to be able to validate form
             listUserAsign: [],
             taskName: "",
             description: "",

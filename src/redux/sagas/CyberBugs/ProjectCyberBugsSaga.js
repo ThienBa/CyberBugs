@@ -10,8 +10,8 @@ import { CLOSE_DRAWER } from "../../constants/CyberBugs/DrawerConstants";
 import { USER_LOGIN } from "../../../utils/constants/settingSystem"
 
 /**
- * Nghiệp vụ tạo project
- * 15/10/2021 - Huỳnh Thiên Bá
+ * Major tạo project
+ * 15/10/2021 - Huynh Thien Ba
  */
 
 function* createProjectApi(action) {
@@ -28,7 +28,6 @@ function* createProjectApi(action) {
         }
     } catch (err) {
         openNotificationWithIcon('error', 'Create project error!')
-        console.log(err)
     }
 
     yield put({
@@ -41,8 +40,8 @@ export function* followcreateProjectApi() {
 }
 
 /**
- * Nghiệp vụ lấy dữ liệu project từ api
- * 15/10/2021 - Huỳnh Thiên Bá
+ * Major lấy dữ liệu project từ api
+ * 15/10/2021 - Huynh Thien Ba
  */
 
 function* getListProjectApi() {
@@ -70,7 +69,7 @@ function* getListProjectApi() {
             })
         }
     } catch (err) {
-        // console.log(err)
+        alert(err.response.data)
     }
     yield put({
         type: HIDE_LOADING
@@ -82,8 +81,8 @@ export function* followGetListProjectApi() {
 }
 
 /**
- * Nghiệp vụ update dữ liệu project
- * 18/10/2021 - Huỳnh Thiên Bá
+ * Major update dữ liệu project
+ * 18/10/2021 - Huynh Thien Ba
  */
 
 
@@ -111,7 +110,6 @@ function* updateProjectApi(action) {
 
     } catch (err) {
         openNotificationWithIcon('error', 'Update project error!')
-        console.log(err)
     }
 
     yield put({
@@ -124,8 +122,8 @@ export function* followUpdateProjectApi() {
 }
 
 /**
- * Nghiệp vụ delete project
- * 18/10/2021 - Huỳnh Thiên Bá
+ * Major delete project
+ * 18/10/2021 - Huynh Thien Ba
  */
 
 
@@ -149,7 +147,6 @@ function* deleteProjectApi(action) {
 
     } catch (err) {
         openNotificationWithIcon('error', 'Delete project error!')
-        console.log(err)
     }
 
     yield put({
@@ -162,8 +159,8 @@ export function* followDeleteProjectApi() {
 }
 
 /**
- * Nghiệp vụ delete project
- * 18/10/2021 - Huỳnh Thiên Bá
+ * Major delete project
+ * 18/10/2021 - Huynh Thien Ba
  */
 
 

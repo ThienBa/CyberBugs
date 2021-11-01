@@ -13,8 +13,7 @@ function* getAllStatusApiSaga() {
             })
         }
     } catch (err) {
-        console.log(err)
-        console.log(err.response?.data)
+        alert(err.response?.data)
     }
 
 }

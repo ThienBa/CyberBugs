@@ -21,7 +21,6 @@ function* createTaskApiSagaTask(action) {
 
     } catch (err) {
         openNotificationWithIcon('error', 'Add task error!')
-        console.log(err);
     }
 
 }
@@ -41,8 +40,7 @@ function* getTaskDetailApiSaga(action) {
             })
         }
     } catch (err) {
-        console.log(err);
-        console.log(err.response.data);
+        alert(err.response.data)
     }
 }
 
@@ -65,8 +63,7 @@ function* updateStatusTaskApiSaga(action) {
             })
         }
     } catch (err) {
-        console.log(err);
-        console.log(err.response.data);
+        alert(err.response.data)
     }
 }
 
@@ -119,8 +116,7 @@ function* updateChangTaskApiSaga(action) {
             })
         }
     } catch (err) {
-        console.log(err);
-        console.log(err.response.data);
+       alert(err.response.data)
     }
 }
 

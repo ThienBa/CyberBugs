@@ -1,9 +1,8 @@
 import React from 'react'
-import parse from 'html-react-parser';
 
 
 export default function InfoMainCyberBugs(props) {
-    const { projectName, description, members } = props.projectDetail;
+    const { projectName, members } = props.projectDetail;
     const renderAvatarMember = (member) => {
         return members?.map((item, index) => {
             return <div key={index} className="avatar">
@@ -14,7 +13,6 @@ export default function InfoMainCyberBugs(props) {
     return (
         <>
             <h4>{projectName}</h4>
-            {/* {parse(description)} */}
             <div className="info" style={{ display: 'flex' }}>
                 <div className="search-block">
                     <input className="search" />

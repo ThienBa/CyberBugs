@@ -15,7 +15,7 @@ export default function CreateProjectCyberBugs() {
     const editorRef = useRef(null);
 
     const formik = useFormik({
-        enableReinitialize: true, //Load lại formil khi state hoặc props thay đổi
+        enableReinitialize: true, 
         initialValues: {
             projectName: '',
             description: '',

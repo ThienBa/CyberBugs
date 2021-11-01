@@ -43,8 +43,8 @@ export function* followLoginUserApi() {
 }
 
 /**
- * Nghiệp vụ get user từ api
- * Ngày 18/10/2021 - Huỳnh Thiên Bá
+ * Major get user từ api
+ * Ngày 18/10/2021 - Huynh Thien Ba
  */
 
 function* getUserSearchApi(action) {
@@ -58,7 +58,7 @@ function* getUserSearchApi(action) {
             })
         }
     } catch (err) {
-        console.log(err)
+       alert(err.response.data)
     }
 }
 
@@ -67,8 +67,8 @@ export function* followGetUserSearchApi() {
 }
 
 /**
- * Nghiệp vụ assign user task
- * Ngày 18/10/2021 - Huỳnh Thiên Bá
+ * Major assign user task
+ * Ngày 18/10/2021 - Huynh Thien Ba
  */
 
 function* assignUserProjectApi(action) {
@@ -84,7 +84,6 @@ function* assignUserProjectApi(action) {
         }
     } catch (err) {
         openNotificationWithIcon('error', 'Add user project error!')
-        console.log(err)
     }
 }
 
@@ -93,8 +92,8 @@ export function* followAssignUserProjectApi() {
 }
 
 /**
- * Nghiệp vụ remove user from project
- * Ngày 19/10/2021 - Huỳnh Thiên Bá
+ * Major remove user from project
+ * Ngày 19/10/2021 - Huynh Thien Ba
  */
 
 function* removeUserFromProjectApi(action) {
@@ -112,7 +111,6 @@ function* removeUserFromProjectApi(action) {
         }
     } catch (err) {
         openNotificationWithIcon('error', 'Remove user from project error!')
-        console.log(err)
     }
 }
 
@@ -130,8 +128,7 @@ function* getUserByProjectIdApiSaga(action) {
             })
         }
     } catch (err) {
-        console.log(err);
-        console.log(err.response.data);
+       alert(err.response.data)
         if (err.response.data.statusCode === STATUS_CODE.NOT_FOUND) {
             yield put({
                 type: GET_USER_BY_PROJECT_ID,
@@ -147,8 +144,8 @@ export function* followGetUserByProjectIdApiSaga() {
 
 
 /**
- * Nghiệp vụ user signup
- * 24/10/2021 - Huỳnh Thiên Bá
+ * Major user signup
+ * 24/10/2021 - Huynh Thien Ba
  */
 //================================================Register================================================
 function* userSigUpApiSaga(action) {
@@ -178,8 +175,8 @@ export function* followUserSigUpApiSaga() {
 }
 
 /**
- * Nghiệp vụ get users
- * 24/10/2021 - Huỳnh Thiên Bá
+ * Major get users
+ * 24/10/2021 - Huynh Thien Ba
  */
 function* getUsersApiSaga(action) {
     yield put({
@@ -200,7 +197,7 @@ function* getUsersApiSaga(action) {
             }
         }
     } catch (err) {
-        console.log(err)
+        alert(err.response.data)
     }
 
     yield put({
@@ -213,8 +210,8 @@ export function* followGetUsersApiSaga() {
 }
 
 /**
- * Nghiệp vụ delete user
- * 25/10/2021 - Huỳnh Thiên Bá
+ * Major delete user
+ * 25/10/2021 - Huynh Thien Ba
  */
 function* deleteUserApiSaga(action) {
     try {
@@ -236,11 +233,10 @@ export function* followDeleteUserApiSaga() {
 }
 
 /**
- * Nghiệp vụ delete user
- * 25/10/2021 - Huỳnh Thiên Bá
+ * Major delete user
+ * 25/10/2021 - Huynh Thien Ba
  */
 function* editUserApiSaga(action) {
-    console.log(action);
     try {
         const { status } = yield call(() => userCyberBugsServices.editUserApi(action.userEdit))
         if (status === STATUS_CODE.SUCCESS) {
@@ -254,7 +250,6 @@ function* editUserApiSaga(action) {
             openNotificationWithIcon('success', 'Edit user successfully!')
         }
     } catch (err) {
-        console.log(err.response.data)
         openNotificationWithIcon('error', 'Edit user failed!')
     }
 }
